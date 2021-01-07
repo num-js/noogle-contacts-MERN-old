@@ -1,0 +1,32 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "noogle contracts api",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdnmnahmed/noogle-contacts.git"
+  },
+  "keywords": [
+    "noogle",
+    "contacts",
+    "noogle-contacts",
+    "google-contacts-clone"
+  ],
+  "author": "N_Ah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdnmnahmed/noogle-contacts/issues"
+  },
+  "homepage": "https://github.com/mdnmnahmed/noogle-contacts#readme"
+}
