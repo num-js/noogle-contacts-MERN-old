@@ -7,7 +7,7 @@ const app = express();
 
 //Middlewares
 app.use(bodyParser.json());
-// app.use('/api', require('./routes/contactsRoute'))
+app.use('/api', require('./routes/contactsRoute'))
 
 
 //Connection with DB
