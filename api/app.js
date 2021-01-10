@@ -13,7 +13,8 @@ app.use('/api', require('./routes/contactsRoute'))
 //Connection with DB
 mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 })
     .then((res) => {
         console.log("Connected with MongoDB ");
