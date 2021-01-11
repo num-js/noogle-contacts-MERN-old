@@ -1,11 +1,8 @@
 import React from 'react';
 import Avatar from 'react-avatar';
 import { Link } from 'react-router-dom';
-import { deleteContact } from '../../actions/contactActions';
-import { useDispatch } from 'react-redux';
 
 const ContactComp = ({ selectAll, singleContact: { id, name, number, email } }) => {
-    const dispatch = useDispatch();
     return (
         <>
             <tr>

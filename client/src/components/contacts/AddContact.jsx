@@ -23,7 +23,6 @@ const AddContact = () => {
             address: address,
             desc: desc
         }
-        dispatch(addContact(newContact));
         history.push('/');
     }
 
