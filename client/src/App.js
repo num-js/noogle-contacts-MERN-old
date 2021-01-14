@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/App.scss';
 
@@ -11,27 +11,53 @@ import EditContact from './components/contacts/EditContact';
 import ViewContact from './components/contacts/ViewContact';
 
 function App() {
+
+    const [allContacts, setAllContacts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/get_contacts/')
+            .then(res => res.json())
+            .then(data => {
+                setAllContacts(data);
+            });
+    }, []);
+
     return (
         <>
-                <Router>
-                    <div className="App">
-                        <NavBar />
-
-                        <div className="container">
-                            <div className="py-3">
-                                <br />
-                                <div>
-                                    <Switch>
-                                        <Route exact path="/" component={Contacts} />
-                                        <Route exact path="/contact/add" component={AddContact} />
-                                        <Route exact path="/contact/editContact/:id" component={ EditContact } />
-                                        <Route exact path="/viewContact/:id" component={ ViewContact } />
-                                    </Switch>
-                                </div>
+            <Router>
+                <div className="App">
+                    <NavBar />
+                    <div className="container">
+                        <div className="py-3">
+                            <br />
+                            <div>
+                                <Switch>
+                                    <Route exact path="/">
+                                        <Contacts
+                                            allContacts={allContacts}
+                                        />
+                                    </Route>
+                                    <Route exact path="/contact/add">
+                                        <AddContact
+                                            allContacts={allContacts}
+                                        />
+                                    </Route>
+                                    <Route exact path="/contact/editContact/:id">
+                                        <EditContact
+                                            allContacts={allContacts}
+                                        />
+                                    </Route>
+                                    <Route exact path="/viewContact/:id">
+                                        <ViewContact
+                                            allContacts={allContacts}
+                                        />
+                                    </Route>
+                                </Switch>
                             </div>
                         </div>
                     </div>
-                </Router>
+                </div>
+            </Router>
         </>
     );
 }

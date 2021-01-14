@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ContactComp from './ContactComp';
 
-const Contacts = () => {
+const Contacts = ({allContacts}) => {
 
-    // const
     
+
     return (
         <div>
             {/* {
@@ -17,13 +17,13 @@ const Contacts = () => {
                     <table className="contactTable p-0 table table-responsive-sm table-center text-center table-hover table-striped shadow">
                         <thead className="bg-primary text-white shadow">
                             <tr>
-                                <th colSpan="2">
+                                {/* <th colSpan="2">
                                     <div className="row">
                                         <div align="left" className="ml-3">
                                             <div className="custom-control custom-checkbox">
                                                 <input id="selectAll" type="checkbox" className="custom-control-input"
-                                                    // value={selectAll}
-                                                    // onClick={() => setSelectAll(!selectAll)}
+                                                    value={selectAll}
+                                                    onClick={() => setSelectAll(!selectAll)}
                                                 />
                                                 <label htmlFor="selectAll" className="custom-control-label"></label>
                                             </div>
@@ -32,19 +32,24 @@ const Contacts = () => {
                                             Name
                                         </div>
                                     </div>
-                                </th>
-                                <th>Mob No</th>
+                                </th> */}
+                                <th colSpan="2">Name</th>
+                                <th>Mobile No</th>
                                 <th>Email</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {
+                            {
                                 allContacts.map((singleContact) => (
-                                    <ContactComp singleContact={singleContact} key={singleContact.id} selectAll={selectAll} />
+                                    <ContactComp
+                                        singleContact={singleContact}
+                                        key={singleContact._id}
+                                    // selectAll={selectAll}
+                                    />
                                 ))
-                            } */}
+                            }
                         </tbody>
                     </table>
                 </div>
