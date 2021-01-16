@@ -1,21 +1,43 @@
 import React from 'react';
 import Avatar from 'react-avatar';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const ContactComp = ({singleContact: {_id, name, mobile_num, email}}) => {
+const ContactComp = ({ singleContact: { _id, name, mobile_num, email }, removeDeletedContact }) => {
+
+    const deleteContact = (id) => {
+        const options = {
+            headers: {
+                "content-type": "application/json",
+            }
+        };
+        axios.delete(`${process.env.REACT_APP_API_URL}delete_contact/${id}`, options)
+            .then((res) => {
+                console.log(res);
+                // props.appendNewCreatedContact(res.data);
+                removeDeletedContact(res.data._id);
+                toast(`${res.data.name} - Contact Deleted`);
+            })
+            .catch(err => {
+                console.log('Failed to Delete Contact: ', err);
+                toast.error('Failed to Delete Contact, try again');
+            })
+    }
+
     return (
         <>
-            <tr key={_id+Date.now} id={_id+Date.now()}>
+            <tr key={_id + Date.now}>
                 <td className="text-right mr-0">
                     <div className="row">
-                        <div style={{ display: 'none' }} id="checkBoxDiv" className="col">
+                        {/* <div style={{ display: 'none' }} id="checkBoxDiv" className="col">
                             <div className="custom-control custom-checkbox">
                                 <input type="checkbox" className="custom-control-input"
                                     
                                 />
                                 <label className="custom-control-label"></label>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col">
                             {/* <Link to={`/viewContact/${id}`}><Avatar className="shadow text-bolder" name={'Numan Ahmed'} size="35" round={true} /></Link> */}
                             <Link to={`/viewContact/${_id}`}><Avatar className="shadow text-bolder" name={name} size="35" round={true} /></Link>
@@ -36,12 +58,12 @@ const ContactComp = ({singleContact: {_id, name, mobile_num, email}}) => {
                     </a>
                 </td>
                 <td className="actions">
-                    {/* <Link to={`/contact/editContact/${id}`}> */}
+                    <Link to={`/contact/editContact/${_id}`}>
                         <span className="material-icons mt-1 mr-3 text-warning">edit</span>
-                    {/* </Link> */}
+                    </Link>
                 </td>
                 <td className="actions">
-                    <span role="button" onClick="nnn" className="material-icons mr-3 text-danger">remove_circle</span>
+                    <span onClick={() => deleteContact(_id)} role="button" className="material-icons mr-3 text-danger">remove_circle</span>
                 </td>
             </tr>
         </>

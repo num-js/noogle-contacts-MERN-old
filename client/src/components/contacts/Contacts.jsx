@@ -1,7 +1,7 @@
 import React from 'react'
 import ContactComp from './ContactComp';
 
-const Contacts = ({allContacts}) => {
+const Contacts = ({allContacts, removeDeletedContact}) => {
 
     
 
@@ -46,7 +46,7 @@ const Contacts = ({allContacts}) => {
                                     <ContactComp
                                         singleContact={singleContact}
                                         key={singleContact._id}
-                                        // selectAll={selectAll}
+                                        removeDeletedContact={removeDeletedContact}
                                     />
                                 ))
                             }

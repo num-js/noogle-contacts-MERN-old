@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,12 +19,12 @@ function App() {
     const [allContactsLoadingAnim, setAllContactsLoadingAnim] = useState(true);
 
     const appendNewCreatedContact = (newContactData) => {
-        // console.log('newContactData To append', newContactData);
         setAllContacts([...allContacts, newContactData])
     }
 
-    const setStateData = (newData) => {
-        
+    const removeDeletedContact = (deletedContactId) => {
+        const removedDeltedContact = allContacts.filter(singleContact => singleContact._id !== deletedContactId);
+        setAllContacts(removedDeltedContact);
     }
 
     useEffect(() => {
@@ -65,6 +64,7 @@ function App() {
                                     <Route exact path="/">
                                         <Contacts
                                             allContacts={allContacts}
+                                            removeDeletedContact={removeDeletedContact}
                                         />
                                     </Route>
                                     <Route exact path="/contact/add">
