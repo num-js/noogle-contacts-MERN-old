@@ -27,12 +27,35 @@ function App() {
         setAllContacts(removedDeltedContact);
     }
 
+    const modifyUpdatedContact = (updatedContactData) => {
+        // console.log('updatedContactData', updatedContactData);
+
+        allContacts.map((singleContact, index) => {
+            if (updatedContactData._id === singleContact._id) {
+                console.log('singleContact.name ', singleContact.name);
+                singleContact.name = updatedContactData.name
+                singleContact.number = updatedContactData.mobile_num
+                singleContact.email = updatedContactData.email
+                singleContact.address = updatedContactData.address
+                singleContact.description = updatedContactData.description
+            }
+        })
+
+        // setAllContacts(modifiedContactData);
+
+        // const updatedMeetingsData = this.state.meetingsData.map((meeting) => {
+        //     if (res.data._id === meeting._id) {
+        //         meeting.meeting_pin = res.data.meeting_pin;
+        //     }
+        // });
+    }
+
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}get_contacts/`)
             .then(res => res.json())
             .then(data => {
                 setAllContacts(data);
-                console.log('data', data);
+                // console.log('data', data);
             })
             .catch(err => console.log('error occured while fetching All Contacts Data. ', err))
             .then(() => {
@@ -76,6 +99,7 @@ function App() {
                                     <Route exact path="/contact/editContact/:id">
                                         <EditContact
                                             allContacts={allContacts}
+                                            modifyUpdatedContact={modifyUpdatedContact}
                                         />
                                     </Route>
                                     <Route exact path="/viewContact/:id">
