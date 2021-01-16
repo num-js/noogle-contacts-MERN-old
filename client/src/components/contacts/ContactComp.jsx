@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ContactComp = ({singleContact: {_id, name, mobile_num, email}}) => {
     return (
         <>
-            <tr>
+            <tr key={_id+Date.now} id={_id+Date.now()}>
                 <td className="text-right mr-0">
                     <div className="row">
                         <div style={{ display: 'none' }} id="checkBoxDiv" className="col">
@@ -41,7 +41,7 @@ const ContactComp = ({singleContact: {_id, name, mobile_num, email}}) => {
                     {/* </Link> */}
                 </td>
                 <td className="actions">
-                    {/* <span role="button" onClick={() => dispatch(deleteContact(id))} className="material-icons mr-3 text-danger">remove_circle</span> */}
+                    <span role="button" onClick="nnn" className="material-icons mr-3 text-danger">remove_circle</span>
                 </td>
             </tr>
         </>

@@ -46,7 +46,7 @@ const Contacts = ({allContacts}) => {
                                     <ContactComp
                                         singleContact={singleContact}
                                         key={singleContact._id}
-                                    // selectAll={selectAll}
+                                        // selectAll={selectAll}
                                     />
                                 ))
                             }
