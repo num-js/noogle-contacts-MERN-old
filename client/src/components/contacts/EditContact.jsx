@@ -45,7 +45,7 @@ const EditContact = (props) => {
 
     useEffect(() => {
         if (id != null) {
-            const specificContactData = props.allContacts.filter(singleContact => singleContact._id == id);
+            const specificContactData = props.allContacts.filter(singleContact => singleContact._id === id);
             console.log('specificContactData', specificContactData);
 
             if (specificContactData.length <= 0) {

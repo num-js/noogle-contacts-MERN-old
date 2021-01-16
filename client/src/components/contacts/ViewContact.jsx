@@ -3,7 +3,6 @@ import { useHistory, useParams, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ViewContact = (props) => {
-
     let { id } = useParams();
     let history = useHistory();
 
@@ -23,7 +22,7 @@ const ViewContact = (props) => {
             toast.error('Contact not Found');
             history.push('/');
         }
-    }, []);
+    }, [specificContact]);
 
     return (
         <div align="center">
@@ -62,7 +61,7 @@ const ViewContact = (props) => {
                             </table>
                             <hr />
                             <div>
-                            {specificContact.description}
+                                {specificContact.description}
                             </div>
                         </div>
                     </div>
