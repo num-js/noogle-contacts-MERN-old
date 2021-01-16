@@ -88,6 +88,7 @@ function App() {
                                         <Contacts
                                             allContacts={allContacts}
                                             removeDeletedContact={removeDeletedContact}
+                                            allContactsLoadingAnim={allContactsLoadingAnim}
                                         />
                                     </Route>
                                     <Route exact path="/contact/add">
