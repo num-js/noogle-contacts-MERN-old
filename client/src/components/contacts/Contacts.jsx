@@ -56,7 +56,7 @@ const Contacts = ({ allContacts, removeDeletedContact, allContactsLoadingAnim })
                     }
 
                     {
-                        allContactsLoadingAnim == false && allContacts == '' ? (
+                        allContactsLoadingAnim === false && allContacts === '' ? (
                             <div className="text-danger font-weight-bold">No Contact Created Yet</div>
                         ) : ''
                     }
