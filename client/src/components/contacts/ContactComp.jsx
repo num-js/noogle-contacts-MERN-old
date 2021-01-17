@@ -39,21 +39,19 @@ const ContactComp = ({ singleContact: { _id, name, mobile_num, email }, removeDe
                             </div>
                         </div> */}
                         <div className="col">
-                            {/* <Link to={`/viewContact/${id}`}><Avatar className="shadow text-bolder" name={'Numan Ahmed'} size="35" round={true} /></Link> */}
                             <Link to={`/viewContact/${_id}`}><Avatar className="shadow text-bolder" name={name} size="35" round={true} /></Link>
                         </div>
                     </div>
                 </td>
                 <td className="text-left ml-0 text-nowrap">
-                    {/* <Link to={`/viewContact/${_id}`} style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>{name}</Link> */}
                     <Link to={`/viewContact/${_id}`} style={{ textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>{name}</Link>
-                    <a href={`tel:${'number'}`} className="ml-3 btn btn-sm btn-success">
+                    <a href={`tel:${mobile_num}`} className="ml-3 btn btn-sm btn-success">
                         <i className="fa fa-phone"></i>
                     </a>
                 </td>
                 <td>{mobile_num}</td>
                 <td>
-                    <a style={{ textDecoration: 'none' }} href={`mailto:${'email'}`} className="text-dark">
+                    <a style={{ textDecoration: 'none' }} href={`mailto:${email}`} className="text-dark">
                         {email}
                     </a>
                 </td>
