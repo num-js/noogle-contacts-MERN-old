@@ -32,13 +32,6 @@ const getSpecificContact = async (req, res) => {
     }
 }
 
-//Edit a Contact
-// const editContact = async (req, res) => {
-//     try{
-//         const  = 
-//     }
-// }
-
 //Delete Contact
 const deleteContact = async (req, res) => {
     try {
@@ -51,7 +44,7 @@ const deleteContact = async (req, res) => {
 
 //Update Contact
 const updateContact = async (req, res) => {
-    const { contact_id: _id } = req.params;
+    const { contact_id: _id } = req.params; //Extracting contact_id & giving a name _id at the same time
     const updateContactData = req.body;
     try {
         const updatedContact = await contactsModel.findByIdAndUpdate(_id, updateContactData, {new: true});
